@@ -1,11 +1,48 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const User = require('./model/users');
+
 app.use(bodyParser.json());
 
+
+
+
+const sequelize = require('./model/index');
+
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Conexão com o banco de dados foi bem-sucedida!');
+    // DB.Financeiro.create({ IDCuidadoso: idcuidadoso, IDSolicitacao: idsolicitacao, NomeCuidadoso: solicitacao.NomeCuidadoso, DataAceitacao: dataFormatada, ValoraPagar: ValorTaxa, ValorTotal: solicitacao.Valor, Status: 'Pendente' }); //
+    
+    // Buscando os dados
+    // const users = await User.findAll();
+    // console.log('Usuários:', users);
+
+  } catch (error) {
+    console.error('Erro ao buscar dados:', error);
+  }
+  // Não feche a conexão aqui se ainda estiver fazendo consultas
+  // await sequelize.close();
+})();
+
+
 // Rota para listar todos os usuários
+
 app.get('/', (req, res) => {
-  res.send('Bem-vindo à API de Usuários!');
+  (async () => {
+    try {
+      // Buscar todos os usuários
+      const users = await User.findAll();
+      console.log('Usuários:', users);
+      res.json(users);
+  
+      
+    } catch (error) {
+      console.error('Erro ao buscar dados:', error);
+    }
+  })();
 });
 // Definir a porta do servidor
 const PORT = 80;
