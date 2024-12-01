@@ -27,6 +27,20 @@ const sequelize = require('./model/index');
   // await sequelize.close();
 })();
 
+app.get('/cadastro/:id/:name/:email', async (req, res) => {
+let id = req.params.id;
+let name = req.params.name; 
+let email = req.params.email;
+
+User.create({
+  id: id,
+  name: name,
+  email: email
+})
+res.redirect('/');
+
+});
+
 
 // Rota para listar todos os usuários
 
