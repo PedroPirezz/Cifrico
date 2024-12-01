@@ -2,30 +2,28 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const User = require('./model/users');
+const sequelize = require('./model/index');
 
 app.use(bodyParser.json());
-
-
-
-
-const sequelize = require('./model/index');
 
 (async () => {
   try {
     await sequelize.authenticate();
     console.log('Conexão com o banco de dados foi bem-sucedida!');
-    // DB.Financeiro.create({ IDCuidadoso: idcuidadoso, IDSolicitacao: idsolicitacao, NomeCuidadoso: solicitacao.NomeCuidadoso, DataAceitacao: dataFormatada, ValoraPagar: ValorTaxa, ValorTotal: solicitacao.Valor, Status: 'Pendente' }); //
-    
-    // Buscando os dados
-    // const users = await User.findAll();
-    // console.log('Usuários:', users);
-
   } catch (error) {
     console.error('Erro ao buscar dados:', error);
   }
-  // Não feche a conexão aqui se ainda estiver fazendo consultas
-  // await sequelize.close();
 })();
+app.get('/deletar/:id', (req, res) => {
+  let id = req.params.id;
+  User.destroy({
+    where: {
+      id: id
+    }
+  })
+  res.redirect('/');
+})
+
 
 app.get('/cadastro/:id/:name/:email', async (req, res) => {
 let id = req.params.id;
@@ -40,10 +38,6 @@ User.create({
 res.redirect('/');
 
 });
-
-
-// Rota para listar todos os usuários
-
 app.get('/', (req, res) => {
   (async () => {
     try {
@@ -58,8 +52,10 @@ app.get('/', (req, res) => {
     }
   })();
 });
-// Definir a porta do servidor
+
 const PORT = 80;
 app.listen(PORT, () => {
   console.log(`API rodando na porta ${PORT}`);
 });
+
+
