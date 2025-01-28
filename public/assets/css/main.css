@@ -1346,37 +1346,35 @@ section,
   position: relative;
   overflow: hidden;
 }
+.portfolio .portfolio-item {
+  position: relative; /* Isso garante que os elementos filhos com posição 'absolute' sejam posicionados em relação ao pai */
+}
 
 .portfolio .portfolio-item .portfolio-info {
   opacity: 1; /* Sempre visível */
   position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 0; /* Posicionada no lugar correto */
+  width: 100%; /* A largura será 100% do seu elemento pai (.portfolio-item) */
+  left: 0; /* Sem margem esquerda */
+  right: 0; /* Sem margem direita */
+  bottom: 0; /* Posicionada na parte inferior */
   z-index: 3;
-  transition: none; /* Remove transição */
-  background-color:rgba(40, 58, 90, 0.9); /* Cor do fundo */
+
+  background-color: rgba(40, 58, 90, 0.9); /* Cor do fundo */
   padding: 15px;
+  box-sizing: border-box; /* Garantir que o padding não afete a largura */
 }
 
-.portfolio .portfolio-item .portfolio-info h4 {
-  font-size: 18px;
-  font-weight: 600;
-  padding-right: 50px;
+.portfolio .portfolio-item .portfolio-info h4,
+.portfolio .portfolio-item .portfolio-info p {
   color: white;
 }
 
 .portfolio .portfolio-item .portfolio-info p {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
   font-size: 14px;
-  margin-bottom: 0;
-  padding-right: 50px;
-  color: white;
 }
 
 .portfolio .portfolio-item .portfolio-info .preview-link,
 .portfolio .portfolio-item .portfolio-info .details-link {
-  
   right: 50px;
   font-size: 24px;
   top: calc(50% - 14px);
@@ -1384,7 +1382,6 @@ section,
   transition: 0.3s;
   line-height: 0;
   color: white;
-  
 }
 
 .portfolio .portfolio-item .portfolio-info .preview-link:hover,
@@ -1396,6 +1393,7 @@ section,
   right: 14px;
   font-size: 28px;
 }
+
 
 /* Removido o hover, pois a div agora está sempre visível */
 

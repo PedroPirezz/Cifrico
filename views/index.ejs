@@ -95,12 +95,15 @@
                 </select>
                 <input name="indice" class="form-control flex-grow-1" type="number" name="cifra" placeholder="Índice"
                   style="margin: 0 5px;" required>
-                  <button type="submit" class="btn btn-outline-primary rounded-circle" style="background-color: #3d4d6a; border-color: #3d4d6a;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-zoom-in" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-                      <path d="M10.7 14.3a1 1 0 1 1 1.4 0l3 3a1 1 0 1 1-1.4 1.4L10 15.6a1 1 0 1 1-1.4-1.4l2.3-2.3z"/>
-                    </svg>
-                  </button>
+                <button type="submit" class="btn btn-outline-primary rounded-circle"
+                  style="background-color: #3d4d6a; border-color: #3d4d6a;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-zoom-in"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                      d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                    <path d="M10.7 14.3a1 1 0 1 1 1.4 0l3 3a1 1 0 1 1-1.4 1.4L10 15.6a1 1 0 1 1-1.4-1.4l2.3-2.3z" />
+                  </svg>
+                </button>
               </form>
             </div><br>
             <h6>Busca por nome</h6>
@@ -116,11 +119,14 @@
                     </option>
                     <% } %>
                 </datalist>
-                <!-- From Uiverse.io by gharsh11032000 --> 
-                <button type="submit" class="btn btn-outline-primary rounded-circle" style="background-color: #3d4d6a; border-color: #3d4d6a;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-zoom-in" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-                    <path d="M10.7 14.3a1 1 0 1 1 1.4 0l3 3a1 1 0 1 1-1.4 1.4L10 15.6a1 1 0 1 1-1.4-1.4l2.3-2.3z"/>
+                <!-- From Uiverse.io by gharsh11032000 -->
+                <button type="submit" class="btn btn-outline-primary rounded-circle"
+                  style="background-color: #3d4d6a; border-color: #3d4d6a;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-zoom-in"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                      d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                    <path d="M10.7 14.3a1 1 0 1 1 1.4 0l3 3a1 1 0 1 1-1.4 1.4L10 15.6a1 1 0 1 1-1.4-1.4l2.3-2.3z" />
                   </svg>
                 </button>
               </form>
@@ -140,7 +146,7 @@
               </a>
             </div>
             <br>
-           
+
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
@@ -156,29 +162,26 @@
 
                   <% }else{ %>
                     <a href="/cancao/<%= cifrasfavoritas[i].tom %>/<%= cifrasfavoritas[i].indice %>">
-                    <div class="col-lg-2 col-md-4 portfolio-item isotope-item rounded mx-1 mb-4" >
-                      <!-- Imagem principal -->
-                      <% const imagemBase64=cifrasfavoritas[i].arquivo.toString('base64'); %>
-                        <div class="shadow p-3 mb-9 bg-white rounded">
-                          <img class="img-fluid" src="data:image/png;base64,<%= imagemBase64 %>"
-                            alt="<%= cifrasfavoritas[i].nome %>" style="max-width: 100%; height: auto;">
-                          <div class="portfolio-info rounded">
-                            <p>ORDEM: <%=i+1%></p>
-                            <h5 style="color: white;">
-                              <%= cifrasfavoritas[i].nome %> 1
-                            </h5>
-                            
-                            <p>TOM: <%= cifrasfavoritas[i].tom %></p>
-                            <!-- Link para a mesma imagem -->
-
-
-                         
-                           
-                              
-                              
+                      <div class="col-lg-3 col-md-6 portfolio-item isotope-item rounded mb-5 mx-auto"
+                        style="border: #3d4d6a 1px solid;">
+                        <!-- Imagem principal -->
+                        <% const imagemBase64=cifrasfavoritas[i].arquivo.toString('base64'); %>
+                          <div class="shadow p-3 mb-9 bg-white rounded position-relative">
+                            <img class="img-fluid" src="data:image/png;base64,<%= imagemBase64 %>"
+                              alt="<%= cifrasfavoritas[i].nome %>" style="max-width: 100%; height: auto;">
+                            <div class="portfolio-info rounded">
+                              <p>ORDEM: <%= i + 1 %>
+                              </p>
+                              <h5 style="color: white;">
+                                <%= cifrasfavoritas[i].nome %> 1
+                              </h5>
+                              <p>TOM: <%= cifrasfavoritas[i].tom %>
+                              </p>
+                              <!-- Link para a mesma imagem -->
+                            </div>
                           </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
+                      </div> <!-- End Portfolio Item -->
+
                     </a>
                     <% } %>
                       <% } %>
