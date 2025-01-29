@@ -2181,3 +2181,6 @@ button:active {
   
   color: white;
 }
+
+
+@media screen and (orientation:landscape) {.cifrasbox{margin-left: 2.5%; }}

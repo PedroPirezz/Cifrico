@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
   Cifras.findAll({ raw: true, where: { favoritado: true }, order: [['updatedAt', 'ASC']] }).then(cifrasfavoritas => {
     Cifras.findAll({ raw: true, attributes: ['nome', 'tom', 'indice'] }).then(todascifras => {
    
-    res.render('index.ejs', { cifrasfavoritas: cifrasfavoritas, todascifras: todascifras });
+    res.render('index.ejs', { cifrasfavoritas: cifrasfavoritas });
     })
   })
 });
@@ -46,20 +46,18 @@ app.get('/cancao/:tom/:indice', (req, res) => {
     if (cifracerta.length == 0) {
       res.redirect('/');
     }else{ 
- 
+   
       res.render('starter-page.ejs', { cifra: cifracerta  });
     }
   })
 }); 
 
-app.get('/only/:tom/:indice', (req, res) => {
-  const toma = req.params.tom;
-  const indicea = req.params.indice;
-
-  Cifras.findAll({ raw: true, where: { tom: toma, indice: indicea } }).then(cifracerta => {
-    console.log(cifracerta)
-    res.render('onlycipher.ejs', { cifra: cifracerta  });
-  })
+app.get('/search', (req, res) => {
+    Cifras.findAll({ raw: true, attributes: ['nome', 'tom', 'indice'] }).then(todascifras => {
+   
+    res.render('search.ejs', {  todascifras: todascifras });
+    })
+  
 });
 
 app.post('/findbyname', (req, res) => {
