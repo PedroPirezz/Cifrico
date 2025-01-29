@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
   Cifras.findAll({ raw: true, where: { favoritado: true }, order: [['updatedAt', 'ASC']] }).then(cifrasfavoritas => {
     Cifras.findAll({ raw: true, attributes: ['nome', 'tom', 'indice'] }).then(todascifras => {
    
-    res.render('index.ejs', { cifrasfavoritas: cifrasfavoritas });
+    res.render('home.ejs', { cifrasfavoritas: cifrasfavoritas });
     })
   })
 });
@@ -47,7 +47,7 @@ app.get('/cancao/:tom/:indice', (req, res) => {
       res.redirect('/');
     }else{ 
    
-      res.render('starter-page.ejs', { cifra: cifracerta  });
+      res.render('musicpage.ejs', { cifra: cifracerta  });
     }
   })
 }); 
