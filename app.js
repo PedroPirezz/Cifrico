@@ -14,10 +14,10 @@ app.use(express.static(path.join(__dirname, 'public')));
  
 app.get('/', (req, res) => {
   Cifras.findAll({ raw: true, where: { favoritado: true }, order: [['updatedAt', 'ASC']] }).then(cifrasfavoritas => {
-    Cifras.findAll({ raw: true, attributes: ['nome', 'tom', 'indice'] }).then(todascifras => {
+    
    
     res.render('home.ejs', { cifrasfavoritas: cifrasfavoritas });
-    })
+    
   })
 });
   
